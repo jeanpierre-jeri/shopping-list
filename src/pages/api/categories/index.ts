@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const newCategory = await prisma.category.create({ data: { name } })
 
-      return res.json(newCategory)
+      return res.status(201).json(newCategory)
     } catch (error) {
       console.error(error)
       return res.status(500).json({ msg: 'INTERNAL_SERVER_ERROR' })
