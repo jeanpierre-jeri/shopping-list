@@ -1,7 +1,5 @@
+import { prisma } from '@/services/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
-
 interface productInputInterface {
   name: string
   categoryId: number
