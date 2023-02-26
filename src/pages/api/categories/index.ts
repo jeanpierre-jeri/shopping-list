@@ -2,8 +2,6 @@ import { NextApiResponse, NextApiRequest } from 'next'
 import { prisma } from '@/services/prisma'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.method)
-
   if (req.method === 'GET') {
     const categories = await prisma.category.findMany()
 
@@ -12,9 +10,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === 'POST') {
     const data = req.body
+    const { name = '' } = data
 
-    const newCategory = await prisma.category.create({ data })
+    if (name === '') {
+      return res.status(400).json({ msg: 'BAD_REQUEST', error: 'name must be provided' })
+    }
 
-    return res.json(newCategory)
+    try {
+      const newCategory = await prisma.category.create({ data: { name } })
+
+      return res.json(newCategory)
+    } catch (error) {
+      console.error(error)
+      return res.status(500).json({ msg: 'INTERNAL_SERVER_ERROR' })
+    }
   }
+
+  return res.status(405).json({ msg: 'METHOD_NOT_ALLOWED' })
 }
