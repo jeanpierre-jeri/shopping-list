@@ -1,7 +1,0 @@
-POST http://localhost:3000/api/shopping_list
-Content-Type: application/json
-
-{
-    "name":"First Shopping List 2",
-    "status":"incompleted"
-}

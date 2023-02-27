@@ -17,21 +17,21 @@ model Category {
 }
 
 model Product {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  note                String?
-  image               String?
-  category            Category              @relation(fields: [categoryId], references: [id])
-  categoryId          Int
-  ProductShoppingList ProductShoppingList[]
+  id            Int                   @id @default(autoincrement())
+  name          String
+  note          String?
+  image         String?
+  category      Category              @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  shoppingLists ProductShoppingList[]
 }
 
 model ShoppingList {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  status              String
-  createdAt           DateTime              @default(now())
-  ProductShoppingList ProductShoppingList[]
+  id        Int                   @id @default(autoincrement())
+  name      String
+  status    String
+  createdAt DateTime              @default(now())
+  products  ProductShoppingList[]
 }
 
 model ProductShoppingList {
@@ -41,4 +41,5 @@ model ProductShoppingList {
   shoppingListId Int
   shoppingList   ShoppingList @relation(fields: [shoppingListId], references: [id])
   quantity       Int
+  completed      Boolean      @default(false)
 }
