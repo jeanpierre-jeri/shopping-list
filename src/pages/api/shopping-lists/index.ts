@@ -21,19 +21,19 @@ export default async function shoppingListHandler(req: NextApiRequest, res: Next
     const newShoppingList = await prisma.shoppingList.create({
       data: {
         name,
-        status,
-        products: {
-          create: [
-            {
-              quantity: 2,
-              product: {
-                connect: {
-                  id: 1
-                }
-              }
-            }
-          ]
-        }
+        status
+        // products: {
+        //   create: [
+        //     {
+        //       quantity: 2,
+        //       product: {
+        //         connect: {
+        //           id: 1
+        //         }
+        //       }
+        //     }
+        //   ]
+        // }
       }
     })
 
