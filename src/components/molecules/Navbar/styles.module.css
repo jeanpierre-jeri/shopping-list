@@ -1,0 +1,11 @@
+.link {
+  @apply flex justify-center py-3 relative;
+
+  &::after {
+    content: '';
+    border-radius: 0 4px 4px 0;
+    width: 6px;
+    transition: opacity 0.3s ease;
+    @apply block absolute left-0 top-0 bottom-0 bg-primary;
+  }
+}
