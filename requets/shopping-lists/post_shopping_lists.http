@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/shopping_list
+POST http://localhost:3000/api/shopping-lists
 Content-Type: application/json
 
 {

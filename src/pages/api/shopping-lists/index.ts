@@ -8,15 +8,9 @@ interface shoppingListInterface {
 
 export default async function shoppingListHandler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    const { id } = req.query
-    if (id !== '') {
-      const shoppingListFound = await prisma.shoppingList.findUnique(id)
-      return res.status(201).json({ shoppingListFound })
-    }
-
     const shoppingList = await prisma.shoppingList.findMany()
 
-    return res.json({ shoppingList })
+    return res.json(shoppingList)
   }
   if (req.method === 'POST') {
     const {
@@ -24,8 +18,25 @@ export default async function shoppingListHandler(req: NextApiRequest, res: Next
       status
     } = req.body as shoppingListInterface
 
-    const newShoppingList = await prisma.shoppingList.create({ data: { name, status } })
+    const newShoppingList = await prisma.shoppingList.create({
+      data: {
+        name,
+        status,
+        products: {
+          create: [
+            {
+              quantity: 2,
+              product: {
+                connect: {
+                  id: 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    })
 
-    return res.status(201).json({ newShoppingList })
+    return res.status(201).json(newShoppingList)
   }
 }
