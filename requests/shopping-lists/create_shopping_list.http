@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/shopping_lists
+Content-Type: application/json
+
+{
+    "name":"First Shopping List 4",
+    "status":"incompleted",
+    "products": [
+        {
+            "productId": 2,
+            "quantity":5,
+            "completed": true
+        }
+    ]
+}

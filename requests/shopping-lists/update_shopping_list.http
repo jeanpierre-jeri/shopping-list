@@ -1,0 +1,16 @@
+PATCH http://localhost:3000/api/shopping-lists/4
+Content-Type: application/json
+
+{
+  "status": "incomplete",
+  "products": [
+    {
+      "productId": 1,
+      "completed": true
+    },
+    {
+      "productId": 2,
+      "completed": false
+    }
+  ]
+}
