@@ -10,12 +10,15 @@ const quicksand = Quicksand({
   display: 'swap'
 })
 
-const fetcher = async (resource: any, init: any) => await fetch(resource, init).then(async res => await res.json())
+const fetcher = async (resource: any, init: any) =>
+  await fetch(resource, init).then(async (res) => await res.json())
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig value={{ fetcher }}>
-      <div className={`${quicksand.variable} font-medium font-quicksand`}>
+      <div
+        className={`${quicksand.variable} font-medium font-quicksand text-content`}
+      >
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>

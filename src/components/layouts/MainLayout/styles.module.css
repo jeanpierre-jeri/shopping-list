@@ -6,9 +6,3 @@
     grid-template-columns: 3.85rem 1fr 24.35rem;
   }
 }
-
-.cart {
-  /* left: 3.85rem; */
-  left: 100vw;
-  @apply fixed top-0 right-0 bottom-0;
-}

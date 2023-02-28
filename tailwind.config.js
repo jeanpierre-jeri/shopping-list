@@ -7,7 +7,11 @@ module.exports = {
         quicksand: ['var(--font-quicksand)', 'sans-serif']
       },
       colors: {
-        primary: '#F9A109'
+        primary: '#F9A109',
+        content: '#34333A'
+      },
+      screens: {
+        xs: '450px'
       }
     }
   },
