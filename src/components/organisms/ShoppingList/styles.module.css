@@ -1,0 +1,11 @@
+.cart {
+  left: 100vw;
+  left: 3.85rem;
+  grid-template-rows: 1fr 5.875rem;
+  max-width: 24.375rem;
+  @apply fixed top-0 right-0 bottom-0 bg-orange-100 grid;
+
+  @screen xs {
+    left: auto;
+  }
+}

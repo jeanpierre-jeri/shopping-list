@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
-import { User, Navbar } from '@/components/molecules'
-import { Cart } from '@/components/molecules/Cart'
+import { User, Navbar, Cart } from '@/components/molecules'
 import styles from './styles.module.css'
+import { ShoppingList } from '@/components/organisms'
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
@@ -14,7 +14,8 @@ export function MainLayout({ children }: PropsWithChildren) {
         <Cart />
       </aside>
       <main>{children}</main>
-      <aside className={styles.cart}>Hola mundo</aside>
+
+      <ShoppingList />
     </div>
   )
 }

@@ -11,7 +11,9 @@ const quicksand = Quicksand({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${quicksand.variable} font-medium font-quicksand`}>
+    <div
+      className={`${quicksand.variable} font-medium font-quicksand text-content`}
+    >
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>
