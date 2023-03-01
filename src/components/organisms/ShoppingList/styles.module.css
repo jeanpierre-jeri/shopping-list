@@ -1,11 +1,16 @@
 .cart {
-  left: 100vw;
   left: 3.85rem;
+  transform: translateX(100vw);
   grid-template-rows: 1fr 5.875rem;
   max-width: 24.375rem;
-  @apply fixed top-0 right-0 bottom-0 bg-orange-100 grid;
+  transition: transform 0.4s ease-in-out;
+  @apply fixed top-0 right-0 bottom-0 bg-orange-100 grid isolate;
 
   @screen xs {
     left: auto;
+  }
+
+  &[data-active='true'] {
+    transform: translateX(0);
   }
 }
