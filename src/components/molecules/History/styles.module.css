@@ -1,0 +1,8 @@
+.completed {
+  border: 1px solid #56ccf2;
+  color: #56ccf2;
+}
+.incompleted {
+  border: 1px solid #eb5757;
+  color: #eb5757;
+}
