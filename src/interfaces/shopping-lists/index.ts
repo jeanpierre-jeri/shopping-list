@@ -17,3 +17,11 @@ export interface ShoppingListUpdate {
   status: string
   products: ShoppingListUpdatedProducts[]
 }
+
+export interface ShoppingListItem {
+  id: number
+  name: string
+  status: string
+  createdAt: string
+
+}
