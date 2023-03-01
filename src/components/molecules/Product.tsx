@@ -14,7 +14,7 @@ export function Product({ id, name }: ProductProps) {
       className='px-4 py-3 flex justify-between  bg-white rounded-xl shadow-lg'
     >
       <span className='text-sm font-semibold max-w-[10ch]'>{name}</span>
-      <button onClick={() => addProduct(id)}>
+      <button onClick={() => addProduct({ productId: id, name })}>
         <PlusIcon />
       </button>
     </div>

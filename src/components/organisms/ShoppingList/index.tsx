@@ -23,15 +23,14 @@ export function ShoppingList() {
           <AddItemCard />
           <div className='overflow-y-auto flex-grow-1 flex flex-col justify-center mt-8'>
             {products.length === 0 ? (
-              <h3 className='mt-16 font-bold text-xl'>No items</h3>
+              <h3 className='mt-16 font-bold text-xl text-center'>No items</h3>
             ) : (
               <>
                 <h3>Shopping List</h3>
                 {products.map((product) => {
                   return (
                     <p key={product.productId}>
-                      {product.productId}{' '}
-                      <span>Quantity {product.quantity}</span>
+                      {product.name} <span>Quantity {product.quantity}</span>
                     </p>
                   )
                 })}
