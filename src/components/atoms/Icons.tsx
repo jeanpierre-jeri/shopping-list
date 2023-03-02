@@ -155,7 +155,7 @@ export function BackArrowIcon() {
       height='24px'
       viewBox='0 0 24 24'
       width='24px'
-      fill='#000000'
+      fill='#F9A109'
     >
       <path d='M0 0h24v24H0z' fill='none' />
       <path d='M22 12l-4-4v3H3v2h15v3z' />

@@ -1,0 +1,13 @@
+.aside {
+  @apply fixed px-11 bg-white;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24.375rem;
+}
+.figure {
+  width: 18.75rem;
+  height: 13.68rem;
+  border-radius: 25px;
+  overflow: hidden;
+}
