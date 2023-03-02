@@ -1,13 +1,24 @@
 import { useShoppingListStore } from '@/store'
-import { PlusIcon } from '../atoms'
 
-interface ProductProps {
+import { PlusIcon, BackArrowIcon } from '../../atoms'
+import styles from './styles.module.css'
+
+interface ProductItem {
   id: number
   name: string
+  image?: string
+  note?: string
 }
 
-export function Product({ id, name }: ProductProps) {
+interface ProductProps {
+  product: ProductItem
+}
+
+export function Product({ product }: ProductProps) {
+  const { id, name } = product
+
   const addProduct = useShoppingListStore((state) => state.addProduct)
+
   return (
     <>
       <div
@@ -15,10 +26,11 @@ export function Product({ id, name }: ProductProps) {
         className='px-4 py-3 flex justify-between  bg-white rounded-xl shadow-lg'
       >
         <span className='text-sm font-semibold max-w-[10ch]'>{name}</span>
-        <button onClick={() => addProduct({ productId: id, name })}>
+        <button onClick={() => addProduct(id)}>
           <PlusIcon />
         </button>
       </div>
+
       <aside className={`${styles.aside} font-quicksand`}>
         <span className='flex gap-2 text-primary'>
           <span className='rotate-180 flex justify-end'>
@@ -52,6 +64,7 @@ export function Product({ id, name }: ProductProps) {
         </div>
 
       </aside>
+
     </>
 
   )
