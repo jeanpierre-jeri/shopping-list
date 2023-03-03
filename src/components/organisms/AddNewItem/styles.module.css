@@ -1,0 +1,51 @@
+.item {
+  left: 3.85rem;
+  /* transform: translateX(100vw); */
+  max-width: 24.375rem;
+  transition: transform 0.4s ease-in-out;
+  grid-template-rows: 1fr 5.875rem;
+  @apply fixed top-0 right-0 bottom-0 grid isolate bg-[#FAFAFE];
+
+  @screen xs {
+    left: auto;
+  }
+
+  &[data-active='true'] {
+    transform: translateX(0);
+  }
+}
+
+.form {
+  @apply flex-grow mt-7 overflow-y-auto flex flex-col gap-4;
+
+  input,
+  label,
+  textarea,
+  select {
+    @apply w-full text-content text-sm block;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply border-2 border-[#BDBDBD] outline-none rounded-xl p-4 bg-inherit;
+
+    &:focus {
+      @apply border-primary;
+    }
+  }
+
+  div {
+    &:has(input:focus, textarea:focus) label {
+      @apply text-primary;
+    }
+  }
+
+  label {
+    @apply mb-[0.375rem];
+  }
+
+  select {
+    @apply appearance-none;
+  }
+}
