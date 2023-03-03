@@ -9,7 +9,6 @@ interface CategoriesProps {
 
 export function Categories({ categories }: CategoriesProps) {
   return (
-
     <>
       <div className='flex flex-col gap-7'>
         {categories?.map(({ id, name, products }) => (
@@ -33,33 +32,28 @@ export function Categories({ categories }: CategoriesProps) {
           back
         </div>
         <div className='overflow-y-auto'>
-          <span className='block'>
-            name
-          </span>
-          <h3 className='font-medium mt-3 mb-8 text-2xl'>
-            Avocado
-          </h3>
+          <span className='block'>name</span>
+          <h3 className='font-medium mt-3 mb-8 text-2xl'>Avocado</h3>
           <span className='text-xs font-medium text-[#C1C1C4]'>category</span>
           <h4 className='font-medium text-lg mt-3 mb-9'>
             Fruit and vegetables
           </h4>
-          <span className='text-xs font-medium text-[#C1C1C4]'>
-            note
-          </span>
+          <span className='text-xs font-medium text-[#C1C1C4]'>note</span>
           <p className='font-medium text-lg mt-3'>
-            Nutrient-dense foods are those that provide substantial amounts of vitamins, minerals and other nutrients with relatively few calories. One-third of a medium avocado (50 g) has 80 calories and contributes nearly 20 vitamins and minerals, making it a great nutrient-dense food choice.
+            Nutrient-dense foods are those that provide substantial amounts of
+            vitamins, minerals and other nutrients with relatively few calories.
+            One-third of a medium avocado (50 g) has 80 calories and contributes
+            nearly 20 vitamins and minerals, making it a great nutrient-dense
+            food choice.
           </p>
         </div>
-        <div className='flex flex-col sm:flex-row gap-10 items-center justify-center text-base font-bold mt-auto'>
-          <button>
-            delete
-          </button>
-          <button className='bg-primary text-white rounded-xl py-5 px-6'>
+        <div className='flex gap-5 xs:gap-10 items-center justify-center text-base font-bold mt-auto'>
+          <button>delete</button>
+          <button className='bg-primary text-white rounded-xl px-6 py-4'>
             Add to list
           </button>
         </div>
       </aside>
     </>
-
   )
 }

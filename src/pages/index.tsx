@@ -13,13 +13,13 @@ export default function Home() {
       <Head>
         <title>Shopping List</title>
       </Head>
-      <main className='px-3 py-9 min-h-screen'>
+      <div className='px-3 py-9 min-h-screen'>
         {isLoading ? (
           <div>Data is Loading...</div>
         ) : (
           <Categories categories={categories} />
         )}
-      </main>
+      </div>
     </>
   )
 }
