@@ -19,7 +19,7 @@ export function Product({ id, name }: ProductProps) {
           <PlusIcon />
         </button>
       </div>
-      <aside className={`${styles.aside} font-quicksand py-7`}>
+      {/* <aside className={`${styles.aside} font-quicksand py-7`}>
         <span className='flex gap-2 text-primary'>
           <span className='rotate-180 flex justify-end'>
             <BackArrowIcon />
@@ -51,8 +51,7 @@ export function Product({ id, name }: ProductProps) {
           </button>
         </div>
 
-      </aside>
+      </aside> */}
     </>
-
   )
 }

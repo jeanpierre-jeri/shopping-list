@@ -25,6 +25,7 @@ export const useShoppingListStore = create(
       shoppingListId: null,
       shoppingListName: '',
       products: [],
+
       addProduct: ({ productId, name }) => {
         set((state) => {
           const products = [...state.products]
@@ -40,8 +41,8 @@ export const useShoppingListStore = create(
 
           return {
             products: [
-              ...products,
-              { productId, quantity: 1, completed: false, name }
+              { productId, quantity: 1, completed: false, name },
+              ...products
             ]
           }
         })

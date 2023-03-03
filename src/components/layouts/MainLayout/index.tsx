@@ -1,7 +1,9 @@
 import { PropsWithChildren } from 'react'
-import { User, Navbar, Cart } from '@/components/molecules'
-import { ShoppingList } from '@/components/organisms'
+
 import NoSSRWrapper from '@/components/organisms/NoSSRWrapper'
+import { AddNewItem, ShoppingList } from '@/components/organisms'
+import { User, Navbar, Cart } from '@/components/molecules'
+
 import styles from './styles.module.css'
 
 export function MainLayout({ children }: PropsWithChildren) {
@@ -18,6 +20,8 @@ export function MainLayout({ children }: PropsWithChildren) {
         <main>{children}</main>
 
         <ShoppingList />
+
+        <AddNewItem />
       </div>
     </NoSSRWrapper>
   )
