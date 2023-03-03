@@ -4,7 +4,7 @@ export function AddNewItem() {
   return (
     <aside className={`${styles.item}`}>
       <div className='flex flex-col p-10'>
-        <h3>Add a new item</h3>
+        <h3 className='text-xl text-black'>Add a new item</h3>
 
         <form className={`${styles.form}`}>
           {/* Name */}
@@ -54,7 +54,7 @@ export function AddNewItem() {
       <div className='flex justify-center items-center gap-10 text-base font-bold'>
         <button>cancel</button>
 
-        <button className='bg-primary text-white rounded-xl py-5 px-6'>
+        <button className='bg-primary text-white rounded-xl py-4 px-6'>
           Save
         </button>
       </div>
