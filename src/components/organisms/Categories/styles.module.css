@@ -1,9 +1,10 @@
 .aside {
-  @apply fixed px-11 bg-white;
+  @apply fixed px-11 bg-white flex flex-col gap-9;
   right: 0;
   top: 0;
   bottom: 0;
   width: 24.375rem;
+  max-width: 80%;
 }
 .figure {
   width: 18.75rem;
