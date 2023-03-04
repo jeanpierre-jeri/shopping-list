@@ -3,10 +3,17 @@ import { useShoppingListStore } from '@/store'
 interface ProductProps {
   id: number
   name: string
+  categoryName: string
+  categoryId: number
 }
 
-export function Product({ id, name }: ProductProps) {
+export function Product({ id, name, categoryName, categoryId }: ProductProps) {
   const addProduct = useShoppingListStore((state) => state.addProduct)
+
+  const handleAdd = () => {
+    addProduct({ productId: id, name, categoryName, categoryId })
+  }
+
   return (
     <>
       <div
@@ -14,7 +21,7 @@ export function Product({ id, name }: ProductProps) {
         className='px-4 py-3 flex justify-between  bg-white rounded-xl shadow-lg'
       >
         <span className='text-sm font-semibold max-w-[10ch]'>{name}</span>
-        <button onClick={() => addProduct({ productId: id, name })}>
+        <button onClick={handleAdd}>
           <PlusIcon />
         </button>
       </div>

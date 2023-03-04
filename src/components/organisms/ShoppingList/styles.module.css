@@ -4,6 +4,7 @@
   grid-template-rows: 1fr 5.875rem;
   max-width: 24.375rem;
   transition: transform 0.4s ease-in-out;
+  z-index: 1;
   @apply fixed top-0 right-0 bottom-0 bg-orange-100 grid isolate;
 
   @screen xs {

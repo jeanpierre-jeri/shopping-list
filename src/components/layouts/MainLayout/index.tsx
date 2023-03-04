@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 
 import NoSSRWrapper from '@/components/organisms/NoSSRWrapper'
-import { AddNewItem, ShoppingList } from '@/components/organisms'
+import { ShoppingList } from '@/components/organisms'
 import { User, Navbar, Cart } from '@/components/molecules'
 
 import styles from './styles.module.css'
@@ -21,7 +21,7 @@ export function MainLayout({ children }: PropsWithChildren) {
 
         <ShoppingList />
 
-        <AddNewItem />
+        {/* <AddNewItem /> */}
       </div>
     </NoSSRWrapper>
   )

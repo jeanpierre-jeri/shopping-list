@@ -11,20 +11,26 @@ export function Categories({ categories }: CategoriesProps) {
   return (
     <>
       <div className='flex flex-col gap-7'>
-        {categories?.map(({ id, name, products }) => (
-          <div key={id}>
+        {categories?.map(({ id: categoryId, name: categoryName, products }) => (
+          <div key={categoryId}>
             <h2 className='font-quicksand font-medium text-lg text-black mb-4'>
-              {name}
+              {categoryName}
             </h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
               {products.map(({ id, name }) => (
-                <Product key={id} id={id} name={name} />
+                <Product
+                  key={id}
+                  id={id}
+                  name={name}
+                  categoryName={categoryName}
+                  categoryId={categoryId}
+                />
               ))}
             </div>
           </div>
         ))}
       </div>
-      <aside className={`${styles.aside} font-quicksand py-7`}>
+      {/* <aside className={`${styles.aside} font-quicksand py-7`}>
         <div className='flex gap-2 text-primary'>
           <span className='rotate-180 flex justify-end'>
             <BackArrowIcon />
@@ -53,7 +59,7 @@ export function Categories({ categories }: CategoriesProps) {
             Add to list
           </button>
         </div>
-      </aside>
+      </aside> */}
     </>
   )
 }

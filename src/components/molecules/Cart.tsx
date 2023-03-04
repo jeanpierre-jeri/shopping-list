@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useCartStore, useShoppingListStore } from '@/store'
 import { CartIcon } from '../atoms'
 
@@ -9,6 +10,12 @@ export function Cart() {
 
   const products = useShoppingListStore((state) => state.products)
 
+  const cartCount = useMemo(() => {
+    return products.reduce((acc, current) => {
+      return acc + current.products.length
+    }, 0)
+  }, [products])
+
   return (
     <button
       onClick={() => setIsCartActive(!isCartActive)}
@@ -19,7 +26,7 @@ export function Cart() {
           products.length > 0 ? 'scale-100' : 'scale-0'
         }`}
       >
-        {products.length}
+        {cartCount}
       </span>
       <CartIcon />
     </button>

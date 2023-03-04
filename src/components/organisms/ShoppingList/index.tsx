@@ -12,7 +12,7 @@ export function ShoppingList() {
     <>
       <div
         onClick={() => setIsCartActive(false)}
-        className={`bg-black/70 absolute inset-0 transition-opacity duration-300 ${
+        className={`bg-black/70 z-[1] absolute inset-0 transition-opacity duration-300 ${
           isCartActive
             ? 'opacity-100 pointer-events-auto'
             : 'pointer-events-none opacity-0'
@@ -28,10 +28,18 @@ export function ShoppingList() {
               <>
                 <h3>Shopping List</h3>
                 {products.map((product) => {
+                  const { categoryName, products } = product
                   return (
-                    <p key={product.productId}>
-                      {product.name} <span>Quantity {product.quantity}</span>
-                    </p>
+                    <div key={categoryName}>
+                      <h3 className='font-bold'>{categoryName}</h3>
+                      {products.map((p) => {
+                        return (
+                          <p key={p.productId}>
+                            {p.name} <span>Quantity {p.quantity}</span>
+                          </p>
+                        )
+                      })}
+                    </div>
                   )
                 })}
               </>

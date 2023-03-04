@@ -8,12 +8,21 @@ interface ShoppingListProduct {
   name: string
 }
 
-type AddProduct = Pick<ShoppingListProduct, 'productId' | 'name'>
+type AddProduct = Pick<ShoppingListProduct, 'productId' | 'name'> & {
+  categoryName: string
+  categoryId: number
+}
+
+export interface CategoryProducts {
+  categoryId: number
+  categoryName: string
+  products: ShoppingListProduct[]
+}
 
 interface ShoppingListState {
   shoppingListId: number | null
   shoppingListName: string
-  products: ShoppingListProduct[]
+  products: CategoryProducts[]
   addProduct: (product: AddProduct) => void
   setShoppingListId: (shoppingListId: number) => void
   setShoppingListName: (shoppingListName: string) => void
@@ -26,24 +35,48 @@ export const useShoppingListStore = create(
       shoppingListName: '',
       products: [],
 
-      addProduct: ({ productId, name }) => {
+      addProduct: ({ productId, name, categoryName, categoryId }) => {
         set((state) => {
-          const products = [...state.products]
-          const productIndex = products.findIndex(
+          const newProduct = { productId, name, quantity: 1, completed: false }
+          const products = structuredClone(state.products)
+
+          const categoryProductsIndex = products.findIndex(
+            (category) => category.categoryId === categoryId
+          )
+
+          // category not found in products
+          if (categoryProductsIndex === -1) {
+            products.push({
+              categoryId,
+              categoryName,
+              products: [newProduct]
+            })
+
+            return {
+              products
+            }
+          }
+
+          const categoryProducts = products[categoryProductsIndex].products
+
+          const productIndex = categoryProducts.findIndex(
             (product) => product.productId === productId
           )
 
-          if (productIndex !== -1) {
-            products[productIndex].quantity += 1
+          // product not found in category
+          if (productIndex === -1) {
+            categoryProducts.push(newProduct)
 
-            return { products }
+            return {
+              products
+            }
           }
 
+          // product found in category
+          categoryProducts[productIndex].quantity += 1
+
           return {
-            products: [
-              { productId, quantity: 1, completed: false, name },
-              ...products
-            ]
+            products
           }
         })
       },
