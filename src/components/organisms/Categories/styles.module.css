@@ -1,3 +1,12 @@
+.products {
+  grid-template-columns: repeat(auto-fill, minmax(min(140px, 100%), 1fr));
+  @apply grid gap-x-2 gap-y-6;
+
+  @screen xl {
+    grid-template-columns: repeat(auto-fill, minmax(min(182px, 100%), 1fr));
+  }
+}
+
 .aside {
   left: 3.85rem;
   width: 24.375rem;

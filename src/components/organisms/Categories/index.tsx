@@ -1,7 +1,7 @@
 import { CategoriesData } from '@/interfaces'
 import { Product } from '@/components/molecules'
 // import { BackArrowIcon } from '../../atoms'
-// import styles from './styles.module.css'
+import styles from './styles.module.css'
 
 interface CategoriesProps {
   categories: CategoriesData[] | undefined
@@ -16,7 +16,7 @@ export function Categories({ categories }: CategoriesProps) {
             <h2 className='font-quicksand font-medium text-lg text-black mb-4'>
               {categoryName}
             </h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
+            <div className={`${styles.products}`}>
               {products.map(({ id, name }) => (
                 <Product
                   key={id}
