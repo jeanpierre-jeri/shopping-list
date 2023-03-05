@@ -1,7 +1,7 @@
 import { CategoriesData } from '@/interfaces'
 import { Product } from '@/components/molecules'
-import { BackArrowIcon } from '../../atoms'
-import styles from './styles.module.css'
+// import { BackArrowIcon } from '../../atoms'
+// import styles from './styles.module.css'
 
 interface CategoriesProps {
   categories: CategoriesData[] | undefined

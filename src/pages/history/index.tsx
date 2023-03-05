@@ -12,7 +12,7 @@ export default function History() {
       {isLoading ? (
         <div>Data is Loading</div>
       ) : (
-        <div className='flex flex-col gap-7 mt-16'>
+        <div className='flex flex-col gap-7 mt-8'>
           {data?.map(({ id, createdAt, name, status }) => (
             <HistoryItem
               key={id}
@@ -21,7 +21,6 @@ export default function History() {
               status={status}
             />
           ))}
-          {/* eslint-disable-next-line react/jsx-indent */}
         </div>
       )}
     </div>

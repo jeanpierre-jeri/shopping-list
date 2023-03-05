@@ -23,6 +23,7 @@ interface ShoppingListState {
   shoppingListId: number | null
   shoppingListName: string
   products: CategoryProducts[]
+
   addProduct: (product: AddProduct) => void
   setShoppingListId: (shoppingListId: number) => void
   setShoppingListName: (shoppingListName: string) => void

@@ -17,7 +17,7 @@ export function MainLayout({ children }: PropsWithChildren) {
 
           <Cart />
         </aside>
-        <main>{children}</main>
+        <main className='overflow-y-auto'>{children}</main>
 
         <ShoppingList />
 
