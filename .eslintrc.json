@@ -9,6 +9,7 @@
   "rules": {
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "multiline-ternary": "off"
+    "multiline-ternary": "off",
+    "@typescript-eslint/no-misused-promises": "off"
   }
 }

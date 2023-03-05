@@ -7,3 +7,5 @@ export interface CategoriesData {
 }
 
 export type CategoryId = Pick<CategoriesData, 'id'>['id']
+
+export type Category = Pick<CategoriesData, 'id' | 'name'>

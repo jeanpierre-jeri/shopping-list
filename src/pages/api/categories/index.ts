@@ -1,7 +1,10 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 import { prisma } from '@/services/prisma'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === 'GET') {
     const categories = await prisma.category.findMany()
 
@@ -13,7 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { name = '' } = data
 
     if (name === '') {
-      return res.status(400).json({ msg: 'BAD_REQUEST', error: 'name must be provided' })
+      return res
+        .status(400)
+        .json({ msg: 'BAD_REQUEST', error: 'name must be provided' })
     }
 
     try {

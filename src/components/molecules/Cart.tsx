@@ -7,6 +7,7 @@ export function Cart() {
     setIsCartActive: state.setIsCartActive,
     isCartActive: state.isCartActive
   }))
+  const setisNewItemActive = useCartStore((state) => state.setisNewItemActive)
 
   const products = useShoppingListStore((state) => state.products)
 
@@ -16,9 +17,14 @@ export function Cart() {
     }, 0)
   }, [products])
 
+  const handleClick = () => {
+    setisNewItemActive(false)
+    setIsCartActive(!isCartActive)
+  }
+
   return (
     <button
-      onClick={() => setIsCartActive(!isCartActive)}
+      onClick={handleClick}
       className='text-white bg-primary rounded-full p-2 relative isolate'
     >
       <span

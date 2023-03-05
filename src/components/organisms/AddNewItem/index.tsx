@@ -1,12 +1,89 @@
+import { useRef, useState } from 'react'
+import useSWR from 'swr'
+import { useCartStore } from '@/store'
+import { readFileAsDataUrl } from '@/lib'
+import { Category } from '@/interfaces'
 import styles from './styles.module.css'
 
+type Image = string | ArrayBuffer | null
+
 export function AddNewItem() {
+  const { data: categories } = useSWR<Category[]>('/api/categories')
+
+  const [loading, setIsLoading] = useState(false)
+  const submitInput = useRef<HTMLButtonElement>(null)
+  const form = useRef<HTMLFormElement>(null)
+
+  const isNewItemActive = useCartStore((state) => state.isNewItemActive)
+  const setisNewItemActive = useCartStore((state) => state.setisNewItemActive)
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault()
+
+    setIsLoading(true)
+
+    const formData = new FormData(e.currentTarget)
+
+    const {
+      name = '',
+      image,
+      category,
+      note = ''
+    } = Object.fromEntries(formData)
+
+    let img: Image = null
+
+    if (image instanceof File) {
+      img = await readFileAsDataUrl(image)
+    }
+
+    const categoryId = categories?.find(({ name }) => name === category)?.id
+
+    try {
+      await fetch('/api/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          image: img ?? '',
+          note,
+          categoryId: categoryId ?? 0,
+          categoryName: category
+        })
+      })
+
+      form.current?.reset()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleCancel = () => {
+    const ans = window.confirm('Do you want to cancel?')
+
+    if (!ans) return
+
+    setisNewItemActive(false)
+  }
+
   return (
-    <aside className={`${styles.item}`}>
+    <aside className={`${styles.item}`} data-active={isNewItemActive}>
       <div className='flex flex-col p-10'>
         <h3 className='text-xl text-black'>Add a new item</h3>
 
-        <form className={`${styles.form}`}>
+        <form
+          ref={form}
+          className={`${styles.form} ${
+            loading ? 'pointer-events-none' : 'pointer-events-auto'
+          }`}
+          onSubmit={handleSubmit}
+        >
           {/* Name */}
           <div>
             <label htmlFor='name'>Name</label>
@@ -41,21 +118,26 @@ export function AddNewItem() {
               type='text'
               list='categories'
               placeholder='Enter a category'
+              name='category'
             />
-            <datalist id='categories' defaultValue=''>
-              <option value='Fruit and Vegetables' />
-              <option value='Meat and Fish' />
-              <option value='Beverages' />
+            <datalist id='categories'>
+              {categories?.map((category) => {
+                return <option key={category.id} value={category.name} />
+              })}
             </datalist>
           </div>
+          <button ref={submitInput} type='submit' className='hidden' />
         </form>
       </div>
 
       <div className='flex justify-center items-center gap-10 text-base font-bold'>
-        <button>cancel</button>
+        <button onClick={handleCancel}>cancel</button>
 
-        <button className='bg-primary text-white rounded-xl py-4 px-6'>
-          Save
+        <button
+          onClick={() => submitInput.current?.click()}
+          className='bg-primary text-white rounded-xl py-4 px-6'
+        >
+          {loading ? 'Creating...' : 'Save'}
         </button>
       </div>
     </aside>
