@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 
 import NoSSRWrapper from '@/components/organisms/NoSSRWrapper'
-import { AddNewItem, ShoppingList } from '@/components/organisms'
+import { AddNewItem, ProductDetails, ShoppingList } from '@/components/organisms'
 import { User, Navbar, Cart } from '@/components/molecules'
 
 import styles from './styles.module.css'
@@ -20,7 +20,7 @@ export function MainLayout({ children }: PropsWithChildren) {
         <main className='overflow-y-auto'>{children}</main>
 
         <ShoppingList />
-
+        <ProductDetails />
         <AddNewItem />
       </div>
     </NoSSRWrapper>
