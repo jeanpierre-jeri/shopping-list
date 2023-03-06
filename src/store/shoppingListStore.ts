@@ -88,31 +88,31 @@ export const useShoppingListStore = create(
       removeProduct: (id, categoryName) => {
         set((state) => {
           const copyProducts = structuredClone(state.products)
-          const categoriesWithProductFiltered = copyProducts.map(cat => {
-            if (cat.categoryName === categoryName) {
-              const newProducts = cat.products.filter(product => product.productId !== id)
-              return {
-                ...cat,
-                products: newProducts
-              }
+          const newProducts = copyProducts.filter((item) => {
+            if (item.categoryName === categoryName) {
+              item.products = item.products.filter(
+                (product) => product.productId !== id
+              )
             }
-            return cat
+
+            return item.products.length !== 0
           })
           return {
-            products: categoriesWithProductFiltered.filter(category => category.products.length !== 0)
+            products: newProducts
           }
         })
       },
       decrementProduct: (id, categoryName) => {
         set((state) => {
           const copyProducts = structuredClone(state.products)
-          const categoriesWithProductDecremented = copyProducts.map(cat => {
+          const categoriesWithProductDecremented = copyProducts.map((cat) => {
             if (cat.categoryName === categoryName) {
-              const productsDecremented = cat.products.map(product => {
+              const productsDecremented = cat.products.map((product) => {
                 if (product.productId === id) {
                   return {
                     ...product,
-                    quantity: product.quantity - 1 === 0 ? 1 : product.quantity - 1
+                    quantity:
+                      product.quantity - 1 === 0 ? 1 : product.quantity - 1
                   }
                 }
                 return product
@@ -120,7 +120,6 @@ export const useShoppingListStore = create(
               return {
                 ...cat,
                 products: productsDecremented
-
               }
             }
             return cat
