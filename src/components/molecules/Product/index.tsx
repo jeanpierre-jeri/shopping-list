@@ -18,7 +18,7 @@ export function Product({ id, name, categoryName, categoryId }: ProductProps) {
     <>
       <div
         key={id}
-        style={{ boxShadow: '0px 2px 12px rgba(0 0 0 / 0.05)' }}
+        style={{ boxShadow: '0px 2px 12px rgb(0 0 0 / 0.05)' }}
         className='px-4 py-3 flex justify-between  bg-white rounded-xl'
       >
         <span className='text-sm font-semibold max-w-[10ch]'>{name}</span>
