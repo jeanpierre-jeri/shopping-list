@@ -27,6 +27,8 @@ interface ShoppingListState {
   addProduct: (product: AddProduct) => void
   setShoppingListId: (shoppingListId: number) => void
   setShoppingListName: (shoppingListName: string) => void
+  removeProduct: (id: number, categoryName: string) => void
+  decrementProduct: (id: number, categoryName: string) => void
 }
 
 export const useShoppingListStore = create(
@@ -35,7 +37,6 @@ export const useShoppingListStore = create(
       shoppingListId: null,
       shoppingListName: '',
       products: [],
-
       addProduct: ({ productId, name, categoryName, categoryId }) => {
         set((state) => {
           const newProduct = { productId, name, quantity: 1, completed: false }
@@ -83,7 +84,52 @@ export const useShoppingListStore = create(
       },
       setShoppingListId: (shoppingListId) => set(() => ({ shoppingListId })),
       setShoppingListName: (shoppingListName) =>
-        set(() => ({ shoppingListName }))
+        set(() => ({ shoppingListName })),
+      removeProduct: (id, categoryName) => {
+        set((state) => {
+          const copyProducts = structuredClone(state.products)
+          const categoriesWithProductFiltered = copyProducts.map(cat => {
+            if (cat.categoryName === categoryName) {
+              const newProducts = cat.products.filter(product => product.productId !== id)
+              return {
+                ...cat,
+                products: newProducts
+              }
+            }
+            return cat
+          })
+          return {
+            products: categoriesWithProductFiltered.filter(category => category.products.length !== 0)
+          }
+        })
+      },
+      decrementProduct: (id, categoryName) => {
+        set((state) => {
+          const copyProducts = structuredClone(state.products)
+          const categoriesWithProductDecremented = copyProducts.map(cat => {
+            if (cat.categoryName === categoryName) {
+              const productsDecremented = cat.products.map(product => {
+                if (product.productId === id) {
+                  return {
+                    ...product,
+                    quantity: product.quantity - 1 === 0 ? 1 : product.quantity - 1
+                  }
+                }
+                return product
+              })
+              return {
+                ...cat,
+                products: productsDecremented
+
+              }
+            }
+            return cat
+          })
+          return {
+            products: categoriesWithProductDecremented
+          }
+        })
+      }
     }),
     {
       name: 'shopping-list-storage'
