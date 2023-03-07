@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface ShoppingListProduct {
+export interface ShoppingListProduct {
   productId: number
   quantity: number
   completed: boolean

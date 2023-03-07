@@ -73,18 +73,14 @@ export function CartIcon() {
   )
 }
 
-export interface PlusIconProps {
-  isShoppinglist?: boolean
-}
-
-export function PlusIcon({ isShoppinglist }: PlusIconProps) {
+export function PlusIcon() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       height='24px'
       viewBox='0 0 24 24'
       width='24px'
-      fill={`${isShoppinglist !== undefined ? '#F9A109' : '#C1C1C4'}`}
+      fill='currentColor'
     >
       <path d='M0 0h24v24H0V0z' fill='none' />
       <path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' />
@@ -94,14 +90,14 @@ export function PlusIcon({ isShoppinglist }: PlusIconProps) {
 export interface PencilIconProps {
   status?: boolean
 }
-export function PencilIcon({ status }: PencilIconProps) {
+export function PencilIcon() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       height='24px'
       viewBox='0 0 24 24'
       width='24px'
-      fill={`${status === true ? '#000000' : '#F9A109'}`}
+      fill='currentColor'
     >
       <path d='M0 0h24v24H0z' fill='none' />
       <path d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z' />
@@ -192,7 +188,6 @@ export function ArrowIcon() {
       viewBox='0 0 24 24'
       width='24px'
       fill='#F9A109'
-
     >
       <path d='M0 0h24v24H0z' fill='none' />
       <path d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z' />

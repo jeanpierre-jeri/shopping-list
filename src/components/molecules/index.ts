@@ -1,4 +1,7 @@
 export * from './Cart'
+export * from './CartProduct'
+export { default as HistoryItem } from './History/HistoryItem'
 export * from './Navbar'
 export * from './Product'
+export * from './ShoppingListProduct'
 export * from './User'

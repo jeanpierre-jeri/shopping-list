@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 
 interface ProductDetailsSelected {
-  image: string | null
+  image: string
   name: string
-  note: string | null
+  note: string
   category: string
   categoryId: number
   productId: number
@@ -14,21 +14,25 @@ interface ProductDetailsStoreState {
   productDetailsSelected: ProductDetailsSelected
 
   setProductDetailsActive: (isProductDetailsActive: boolean) => void
-  setProductDetailsSelected: (productDetailsSelected: ProductDetailsSelected) => void
-
+  setProductDetailsSelected: (
+    productDetailsSelected: ProductDetailsSelected
+  ) => void
 }
-export const useProductDetailsStore = create<ProductDetailsStoreState>((set) => ({
-  isProductDetailsActive: false,
-  productDetailsSelected: {
-    name: '',
-    note: null,
-    image: null,
-    category: '',
-    categoryId: 0,
-    productId: 0
-  },
+export const useProductDetailsStore = create<ProductDetailsStoreState>(
+  (set) => ({
+    isProductDetailsActive: false,
+    productDetailsSelected: {
+      name: '',
+      note: '',
+      image: '',
+      category: '',
+      categoryId: 0,
+      productId: 0
+    },
 
-  setProductDetailsActive: (isProductDetailsActive) => set(() => ({ isProductDetailsActive })),
-  setProductDetailsSelected: (productDetailsSelected) => set(() => ({ productDetailsSelected }))
-
-}))
+    setProductDetailsActive: (isProductDetailsActive) =>
+      set(() => ({ isProductDetailsActive })),
+    setProductDetailsSelected: (productDetailsSelected) =>
+      set(() => ({ productDetailsSelected }))
+  })
+)

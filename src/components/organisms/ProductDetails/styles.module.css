@@ -1,13 +1,9 @@
 .aside {
-  //left: 3.85rem;
-  width: 24.375rem;
-  max-width: 80%;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  transform: translateX(100%);
-  transition: transform 0.5s ease;
-  @apply fixed px-7 lg:px-11 bg-white flex flex-col gap-9;
+  left: 3.85rem;
+  max-width: 24.375rem;
+  transform: translateX(100vw);
+  transition: transform 0.4s ease-in-out;
+  @apply fixed px-7 lg:px-11 bg-white flex flex-col gap-9 right-0 bottom-0 top-0;
 }
 .isActive {
   transform: translateX(0);
