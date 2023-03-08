@@ -19,6 +19,7 @@ export default function History() {
               createdAt={createdAt}
               name={name}
               status={status}
+              id={id}
             />
           ))}
         </div>
