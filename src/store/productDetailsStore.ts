@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 
 interface ProductDetailsSelected {
-  image: string
+  image: string | null
   name: string
-  note: string
+  note: string | null
   category: string
   categoryId: number
   productId: number

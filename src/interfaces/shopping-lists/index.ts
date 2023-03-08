@@ -1,11 +1,15 @@
+import { Products } from '../products'
+
 export interface ShoppingListProducts {
   productId: number
   quantity: number
+  product: Products
 }
 
 export interface shoppingListInterface {
   name: string
   status: string
+  createdAt: string
   products: ShoppingListProducts[]
 }
 
@@ -23,5 +27,4 @@ export interface ShoppingListItem {
   name: string
   status: string
   createdAt: string
-
 }
