@@ -29,11 +29,14 @@ interface ShoppingListState {
   setShoppingListName: (shoppingListName: string) => void
   removeProduct: (id: number, categoryName: string) => void
   decrementProduct: (id: number, categoryName: string) => void
+  getOnlyProducts: () => Array<Omit<ShoppingListProduct, 'name'>>
+  createShoppingList: (name: string) => void
+  clearProducts: () => void
 }
 
 export const useShoppingListStore = create(
   persist<ShoppingListState>(
-    (set) => ({
+    (set, get) => ({
       shoppingListId: null,
       shoppingListName: '',
       products: [],
@@ -127,6 +130,47 @@ export const useShoppingListStore = create(
           return {
             products: categoriesWithProductDecremented
           }
+        })
+      },
+      getOnlyProducts: () => {
+        const productList: Array<Omit<ShoppingListProduct, 'name'>> = []
+
+        get().products.forEach(({ products }) => {
+          products.forEach((product) => {
+            const { name, ...restOfProduct } = product
+
+            productList.push(restOfProduct)
+          })
+        })
+
+        return productList
+      },
+      createShoppingList: async (name) => {
+        try {
+          const response = await fetch('/api/shopping-lists', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name,
+              status: 'incompleted',
+              products: get().getOnlyProducts()
+            })
+          })
+
+          const data = await response.json()
+
+          console.log(data)
+
+          get().clearProducts()
+        } catch (error) {
+          console.error(error)
+        }
+      },
+      clearProducts: () => {
+        set(() => {
+          return { products: [] }
         })
       }
     }),

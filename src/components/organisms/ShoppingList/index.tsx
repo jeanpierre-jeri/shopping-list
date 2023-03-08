@@ -1,14 +1,34 @@
+import { useState } from 'react'
 import { useCartStore, useShoppingListStore } from '@/store'
 import { EmptyList, AddItemCard, PencilIcon } from '@/components/atoms'
 import { CartProducts } from '@/components/molecules'
 import styles from './styles.module.css'
 
 export function ShoppingList() {
+  const [loading, setLoading] = useState(false)
+  const [nameInput, setNameInput] = useState('')
   const isCartActive = useCartStore((state) => state.isCartActive)
 
   const products = useShoppingListStore((state) => state.products)
 
   const setIsCartActive = useCartStore((state) => state.setIsCartActive)
+
+  const createShoppingList = useShoppingListStore(
+    (state) => state.createShoppingList
+  )
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true)
+    e.preventDefault()
+
+    if (nameInput === '') return
+
+    await createShoppingList(nameInput)
+
+    setNameInput('')
+    setLoading(false)
+    setIsCartActive(false)
+  }
 
   return (
     <>
@@ -48,13 +68,20 @@ export function ShoppingList() {
         </div>
 
         <div className='bg-white pt-[1.125rem] pb-[0.875rem] pl-5 pr-[0.875rem]'>
-          <form>
+          <form
+            onSubmit={handleSubmit}
+            className={`${
+              loading ? 'pointer-events-none' : 'pointer-events-auto'
+            }`}
+          >
             <div className='flex bg-primary border-2 border-primary rounded-xl overflow-hidden'>
               <input
-                className='w-full p-5 outline-none bg-white'
+                className='w-full p-5 outline-none bg-white text-sm'
                 type='text'
                 name='name'
                 placeholder='Enter a name'
+                value={nameInput}
+                onInput={(e) => setNameInput(e.currentTarget.value)}
               />
               <input
                 type='submit'
