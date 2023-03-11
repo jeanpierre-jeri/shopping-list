@@ -1,5 +1,7 @@
 import React from 'react'
 import { BackArrowIcon } from '@/components/atoms'
+import { ToastContainer, toast } from 'react-toastify'
+
 import { useProductDetailsStore } from '@/store/productDetailsStore'
 import styles from './styles.module.css'
 import Image from 'next/image'
@@ -30,7 +32,7 @@ export const ProductDetails = () => {
       productId: productDetailsSelected.productId
     })
 
-    alert('product was added to shopping list')
+    toast.success('Product was added to shoppinglist!')
     setProductDetailsActive(false)
   }
 
@@ -86,6 +88,11 @@ export const ProductDetails = () => {
           Add to list
         </button>
       </div>
+      <ToastContainer
+        position='top-center'
+        autoClose={4000}
+        pauseOnHover={false}
+      />
     </aside>
   )
 }
