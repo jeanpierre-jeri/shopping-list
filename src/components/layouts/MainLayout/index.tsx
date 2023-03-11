@@ -5,6 +5,7 @@ import { AddNewItem, ProductDetails, ShoppingList } from '@/components/organisms
 import { User, Navbar, Cart } from '@/components/molecules'
 
 import styles from './styles.module.css'
+import Overlay from '@/components/atoms/Overlay'
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
@@ -22,6 +23,7 @@ export function MainLayout({ children }: PropsWithChildren) {
         <ShoppingList />
         <ProductDetails />
         <AddNewItem />
+        <Overlay />
       </div>
     </NoSSRWrapper>
   )
