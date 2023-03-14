@@ -1,4 +1,5 @@
 import { PlusIcon } from '@/components/atoms'
+import { ToastContainer, toast } from 'react-toastify'
 import { useShoppingListStore } from '@/store'
 import { useProductDetailsStore } from '@/store/productDetailsStore'
 interface ProductProps {
@@ -24,6 +25,7 @@ export function Product({
 
   const handleAdd = () => {
     addProduct({ productId: id, name, categoryName, categoryId })
+    toast.success('Product was added!')
   }
 
   const handleProductActive = () => {
@@ -49,6 +51,11 @@ export function Product({
       <button onClick={handleAdd}>
         <PlusIcon />
       </button>
+      <ToastContainer
+        position='top-center'
+        autoClose={4000}
+        pauseOnHover={false}
+      />
     </div>
   )
 }
