@@ -11,15 +11,18 @@ import {
 
 import { TopList } from '@/components/molecules'
 
-const STATS = [
-  { name: 'Jan 2023', banana: 35, rice: 65 },
-  { name: 'Feb 2023', banana: 125, rice: 20 },
-  { name: 'Mar 2023', banana: 30, rice: 40 },
-  { name: 'Apr 2023', banana: 10, rice: 100 },
-  { name: 'May 2023', banana: 30, rice: 80 },
-  { name: 'Jun 2023', banana: 15, rice: 5 },
-  { name: 'Jul 2023', banana: 40, rice: 115 }
-]
+import useSWR from 'swr'
+import { randomHexColor } from '@/lib/colors'
+
+// const STATS = [
+//   { name: 'Jan 2023', banana: 35, rice: 65 },
+//   { name: 'Feb 2023', banana: 125, rice: 20 },
+//   { name: 'Mar 2023', banana: 30, rice: 40 },
+//   { name: 'Apr 2023', banana: 10, rice: 100 },
+//   { name: 'May 2023', banana: 30, rice: 80 },
+//   { name: 'Jun 2023', banana: 15, rice: 5 },
+//   { name: 'Jul 2023', banana: 40, rice: 115 }
+// ]
 
 const TOP_ITEMS = [
   { name: 'Banana', percentage: 12 },
@@ -34,6 +37,8 @@ const TOP_CATEGORIES = [
 ]
 
 export default function StatsPage() {
+  const { data } = useSWR('/api/chart')
+
   return (
     <div className='py-7 px-3'>
       <h2 className='text-xl text-black'>Top items</h2>
@@ -48,9 +53,17 @@ export default function StatsPage() {
 
       <div className='max-w-3xl -ml-8'>
         <ResponsiveContainer width='100%' height={302}>
-          <LineChart data={STATS}>
-            <Line type='monotone' dataKey='banana' stroke='#8884d8' />
-            <Line type='monotone' dataKey='rice' stroke='#82ca9d' />
+          <LineChart data={data?.stats}>
+            {data?.names.map((name: string, i: number) => {
+              return (
+                <Line
+                  key={i}
+                  type='monotone'
+                  dataKey={name}
+                  stroke={randomHexColor()}
+                />
+              )
+            })}
             <XAxis dataKey='name' />
             <YAxis />
             <CartesianGrid strokeDasharray='3 3' />

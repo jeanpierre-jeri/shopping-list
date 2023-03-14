@@ -42,4 +42,5 @@ model ProductShoppingList {
   shoppingList   ShoppingList @relation(fields: [shoppingListId], references: [id])
   quantity       Int
   completed      Boolean      @default(false)
+  createdAt      DateTime     @default(now())
 }
