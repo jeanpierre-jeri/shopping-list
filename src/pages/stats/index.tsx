@@ -9,6 +9,8 @@ import {
   YAxis
 } from 'recharts'
 
+import { TopList } from '@/components/molecules'
+
 const STATS = [
   { name: 'Jan 2023', banana: 35, rice: 65 },
   { name: 'Feb 2023', banana: 125, rice: 20 },
@@ -19,36 +21,30 @@ const STATS = [
   { name: 'Jul 2023', banana: 40, rice: 115 }
 ]
 
+const TOP_ITEMS = [
+  { name: 'Banana', percentage: 12 },
+  { name: 'Rice', percentage: 10 },
+  { name: 'Chicken', percentage: 8 }
+]
+
+const TOP_CATEGORIES = [
+  { name: 'Fruit and vegetables', percentage: 23 },
+  { name: 'Meat and Fish', percentage: 14 },
+  { name: 'Pets', percentage: 11 }
+]
+
 export default function StatsPage() {
   return (
     <div className='py-7 px-3'>
-      <h2>Top items</h2>
+      <h2 className='text-xl text-black'>Top items</h2>
 
-      <ul>
-        <li>
-          <div>
-            <h3>Banana</h3>
-            <span>12%</span>
-          </div>
-          <div>------------------</div>
-        </li>
+      <TopList list={TOP_ITEMS} color='#F9A109' />
 
-        <li>
-          <div>
-            <h3>Rice</h3>
-            <span>10%</span>
-          </div>
-          <div>------------------</div>
-        </li>
+      <h2 className='text-xl text-black mt-8'>Top Categories</h2>
 
-        <li>
-          <div>
-            <h3>Chicken</h3>
-            <span>8%</span>
-          </div>
-          <div>------------------</div>
-        </li>
-      </ul>
+      <TopList list={TOP_CATEGORIES} color='#56CCF2' />
+
+      <h2 className='text-xl text-black mt-8 mb-7'>Monthly Summary</h2>
 
       <div className='max-w-3xl -ml-8'>
         <ResponsiveContainer width='100%' height={302}>

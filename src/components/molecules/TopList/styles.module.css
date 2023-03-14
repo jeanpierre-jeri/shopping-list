@@ -1,0 +1,14 @@
+.list {
+  @apply flex flex-col gap-5 mt-5;
+  h3 {
+    @apply text-sm text-black;
+  }
+}
+
+.bar {
+  @apply h-[6px] rounded-[4px] bg-[#E0E0E0] mt-3;
+
+  & > div {
+    @apply h-full rounded-[4px];
+  }
+}
