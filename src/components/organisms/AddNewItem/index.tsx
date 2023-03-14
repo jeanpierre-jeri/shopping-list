@@ -68,20 +68,19 @@ export function AddNewItem() {
     }
   }
 
-  const handleCancel = () => {
+  const handleCancel = (e: any) => {
     setIsOverlayActive(true)
-    // // const ans = window.confirm('Do you want to cancel?')
-
     // // if (!ans) return
     setIsAlertConfirmActive(true)
-    // setisNewItemActive(false)
   }
   const handleCloseModal = () => {
     setIsAlertConfirmActive(false)
     setIsOverlayActive(false)
   }
   const handleCloseAddItem = () => {
+    form.current?.reset()
     setisNewItemActive(false)
+
     handleCloseModal()
   }
   return (
