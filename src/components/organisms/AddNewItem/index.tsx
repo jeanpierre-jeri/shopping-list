@@ -156,7 +156,7 @@ export function AddNewItem() {
       <div className={`${isAlertConfirmActive ? styles.confirm : 'hidden'} `}>
         <div className='relative w-full h-full'>
           <span className='font-quicksand font-semibold max-w-[25ch] block text-2xl text-[#34333A]'>
-            Are you sure that you want to cancel this new item ?
+            Are you sure that you want to cancel this new item?
           </span>
           <div className='absolute top-[-1.8rem] right-[-1.8rem] cursor-pointer' onClick={handleCloseModal}>
             <CloseIcon />

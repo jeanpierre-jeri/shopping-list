@@ -8,6 +8,7 @@ import Image from 'next/image'
 import imageDefault from '../../../../public/no-img-product.jpg'
 import { useShoppingListStore } from '@/store'
 import { useOverlayStore } from '@/store/overlayStore'
+import { useProductStore } from '@/store/productStore'
 
 export const ProductDetails = () => {
   const {
@@ -21,9 +22,10 @@ export const ProductDetails = () => {
   }))
   const [isAlertConfirmActive, setIsAlertConfirmActive] = useState<boolean>(false)
   const { setIsOverlayActive } = useOverlayStore()
+  const { deleteProduct } = useProductStore()
 
   // const addProduct = useShoppingListStore((state) => state.addProduct)
-  const { removeProduct, addProduct } = useShoppingListStore()
+  const { addProduct } = useShoppingListStore()
 
   const handleCloseAside = () => {
     setProductDetailsActive(false)
@@ -51,7 +53,7 @@ export const ProductDetails = () => {
   }
   const handleConfirmDeleteProduct = () => {
     handleCloseModal()
-    removeProduct(productDetailsSelected.productId, productDetailsSelected.category)
+    deleteProduct(productDetailsSelected.productId)
   }
   return (
     <>
