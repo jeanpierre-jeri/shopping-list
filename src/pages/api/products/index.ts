@@ -22,14 +22,13 @@ export default async function productHandler(
     }
     try {
       const id = Number(productId)
-      const productDeleted = await prisma.product.delete({
+      await prisma.product.delete({
         where: {
           id
         }
       })
 
       return res.status(200).json({
-        product: { ...productDeleted },
         msg: 'Product delete succefull'
       })
     } catch (error) {
@@ -83,6 +82,7 @@ export default async function productHandler(
       })
       return res.status(201).json({ product })
     } catch (error) {
+      console.log(error)
       return res.status(500).json({ error })
     }
   }

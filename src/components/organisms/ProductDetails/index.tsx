@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import { BackArrowIcon, CloseIcon } from '@/components/atoms'
+import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-
-import { useProductDetailsStore } from '@/store/productDetailsStore'
-import styles from './styles.module.css'
-import Image from 'next/image'
-import imageDefault from '../../../../public/no-img-product.jpg'
 import { useShoppingListStore } from '@/store'
 import { useOverlayStore } from '@/store/overlayStore'
 import { useProductStore } from '@/store/productStore'
+import { BackArrowIcon, CloseIcon } from '@/components/atoms'
+
+import { useProductDetailsStore } from '@/store/productDetailsStore'
+import styles from './styles.module.css'
 
 export const ProductDetails = () => {
   const {
@@ -20,7 +18,8 @@ export const ProductDetails = () => {
     setProductDetailsActive: state.setProductDetailsActive,
     productDetailsSelected: state.productDetailsSelected
   }))
-  const [isAlertConfirmActive, setIsAlertConfirmActive] = useState<boolean>(false)
+  const [isAlertConfirmActive, setIsAlertConfirmActive] =
+    useState<boolean>(false)
   const { setIsOverlayActive } = useOverlayStore()
   const { deleteProduct } = useProductStore()
 
@@ -42,7 +41,7 @@ export const ProductDetails = () => {
     setProductDetailsActive(false)
   }
 
-  const urlImage = productDetailsSelected.image ?? imageDefault
+  const urlImage = productDetailsSelected.image ?? '/no-img-product.jpg'
   const handleDeleteProduct = () => {
     setIsAlertConfirmActive(true)
     setIsOverlayActive(true)
@@ -59,8 +58,8 @@ export const ProductDetails = () => {
     <>
       <aside
         className={`${styles.aside} ${
-        isProductDetailsActive ? styles.isActive : ''
-      } font-quicksand py-5 lg:py-7`}
+          isProductDetailsActive ? styles.isActive : ''
+        } font-quicksand py-5 lg:py-7`}
       >
         <div
           className='flex gap-2 text-primary cursor-pointer'
@@ -73,12 +72,14 @@ export const ProductDetails = () => {
         </div>
         <div className='overflow-y-auto'>
           <figure className={`${styles.figure}`}>
-            <Image
-              src={urlImage}
-              width='300'
-              height='219'
-              alt={productDetailsSelected.name}
-            />
+            <picture>
+              <img
+                src={urlImage}
+                width='300'
+                height='219'
+                alt={productDetailsSelected.name}
+              />
+            </picture>
           </figure>
           <span className='block'>name</span>
           <h3 className='font-medium mt-3 mb-8 text-2xl'>
@@ -117,12 +118,25 @@ export const ProductDetails = () => {
           <span className='font-quicksand font-semibold max-w-[25ch] block text-2xl text-[#34333A]'>
             Are you sure that you want to delete this product ?
           </span>
-          <div className='absolute top-[-1.8rem] right-[-1.8rem] cursor-pointer' onClick={handleCloseModal}>
+          <div
+            className='absolute top-[-1.8rem] right-[-1.8rem] cursor-pointer'
+            onClick={handleCloseModal}
+          >
             <CloseIcon />
           </div>
           <div className='flex items-center justify-end gap-8 font-quicksand mt-8'>
-            <button className='text-[#34333A] text-sm font-semibold' onClick={handleCloseModal}>cancel</button>
-            <button className='bg-[#EB5757] text-white py-3 px-7 rounded-xl' onClick={handleConfirmDeleteProduct}>Yes</button>
+            <button
+              className='text-[#34333A] text-sm font-semibold'
+              onClick={handleCloseModal}
+            >
+              cancel
+            </button>
+            <button
+              className='bg-[#EB5757] text-white py-3 px-7 rounded-xl'
+              onClick={handleConfirmDeleteProduct}
+            >
+              Yes
+            </button>
           </div>
         </div>
       </div>

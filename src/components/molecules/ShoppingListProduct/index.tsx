@@ -42,7 +42,7 @@ export function ShoppingListProduct({
   return (
     <>
       <div className='flex flex-col items-start justify-between gap-3'>
-        <p className='text-sm font-semibold text-black'>{name}</p>
+        <p className='text-sm xl:text-lg font-semibold text-black'>{name}</p>
 
         <div className='flex items-center justify-center gap-2 bg-white rounded-xl text-primary text-xs'>
           <div onClick={handleDecrement} className='cursor-pointer pl-2'>
@@ -63,6 +63,5 @@ export function ShoppingListProduct({
         </div>
       </div>
     </>
-
   )
 }

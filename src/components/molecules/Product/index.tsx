@@ -45,8 +45,8 @@ export function Product({
       style={{ boxShadow: '0px 2px 12px rgb(0 0 0 / 0.05)' }}
       className='flex bg-white justify-between items-center rounded-xl gap-4 px-4'
     >
-      <div className=' py-3 flex-grow' onClick={handleProductActive}>
-        <span className='text-sm font-semibold'>{name}</span>
+      <div className=' py-3 xl:py-4  flex-grow' onClick={handleProductActive}>
+        <span className='text-sm xl:text-base font-semibold'>{name}</span>
       </div>
       <button onClick={handleAdd}>
         <PlusIcon />
