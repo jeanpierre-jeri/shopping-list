@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+picture {
+  display: flex;
+}
+
+img {
+  display: inline-flex;
+}
