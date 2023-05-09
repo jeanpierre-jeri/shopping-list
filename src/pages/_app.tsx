@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Quicksand } from 'next/font/google'
-import { MainLayout } from '@/components/layouts'
+import { MainLayout } from '@/components/layouts/MainLayout'
 import '@/styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 import { SWRConfig } from 'swr'
