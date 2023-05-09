@@ -1,4 +1,4 @@
-import { useShoppingListStore } from '@/store'
+import { useShoppingListStore } from '@/store/shoppingListStore'
 import { ShoppingListProduct } from '../ShoppingListProduct'
 
 export function CartProducts() {

@@ -2,7 +2,7 @@ import { DeleteIcon, MinusIcon, PlusIcon } from '@/components/atoms/Icons'
 import {
   type ShoppingListProduct as Product,
   useShoppingListStore
-} from '@/store'
+} from '@/store/shoppingListStore'
 
 interface Props {
   product: Product

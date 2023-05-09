@@ -1,11 +1,12 @@
 'use client'
 import { useState } from 'react'
-import { useCartStore, useShoppingListStore } from '@/store'
 import styles from './styles.module.css'
 import { AddItemCard } from '@/components/atoms/AddItemCard'
 import { PencilIcon } from '@/components/atoms/Icons'
 import { CartProducts } from '@/components/molecules/CartProduct'
-import { EmptyList } from '@/components/atoms/EmptyList'
+import { EmptyList } from '@/components/atoms'
+import { useCartStore } from '@/store/cartStore'
+import { useShoppingListStore } from '@/store/shoppingListStore'
 
 export function ShoppingList() {
   const [loading, setLoading] = useState(false)
