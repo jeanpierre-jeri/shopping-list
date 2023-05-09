@@ -29,7 +29,9 @@ export function Navbar() {
           <Link
             key={link}
             href={link}
-            className={`${styles.link} ${pathname === link ? 'after:opacity-100' : 'after:opacity-0'}`}
+            className={`${styles.link} ${
+              pathname === link ? 'after:opacity-100' : 'after:opacity-0'
+            }`}
           >
             {icon}
           </Link>

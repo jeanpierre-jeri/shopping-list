@@ -1,12 +1,11 @@
-
 import { User } from '@/components/molecules/User'
 import styles from './styles.module.css'
 import { Navbar } from '@/components/molecules/Navbar'
 import { Cart } from '@/components/molecules/Cart'
 import { ShoppingList } from '@/components/organisms/ShoppingList'
-import { ProductDetails } from '@/components/organisms/ProductDetails'
 import { AddNewItem } from '@/components/organisms/AddNewItem'
 import { Overlay } from '@/components/atoms/Overlay'
+import { ProductDetails } from '@/components/home/components/organisms/ProductDetails'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,7 +23,6 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
       <ProductDetails />
       <AddNewItem />
       <Overlay />
-
     </div>
   )
 }

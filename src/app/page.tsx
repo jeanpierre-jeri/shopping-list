@@ -1,5 +1,6 @@
+'use client'
 import { SearchIcon } from '@/components/atoms/Icons'
-import { Categories } from '@/components/organisms/Categories'
+import { Categories } from '@/components/home/components/organisms'
 
 export default async function HomePage() {
   // const { data: categories, isLoading } = useSWR<CategoriesData[]>(
@@ -10,8 +11,8 @@ export default async function HomePage() {
     <main className='px-3 xl:pl-20 xl:pr-24 py-9 min-h-screen'>
       <div className='hidden xl:flex gap-14 justify-between'>
         <h1 className='text-2xl'>
-          <strong className='text-primary font-bold '>Shoppingfy</strong>{' '}
-          allows you to take your{' '}
+          <strong className='text-primary font-bold '>Shoppingfy</strong> allows
+          you to take your{' '}
           <span className='block'>shopping list wherever you go</span>
         </h1>
 

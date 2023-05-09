@@ -1,5 +1,5 @@
-import { useCartStore } from '@/store'
-import { Bottle } from './Bottle'
+import { Bottle } from '@/components/atoms/Icons'
+import { useCartStore } from '@/store/cartStore'
 
 export function AddItemCard() {
   const setisNewItemActive = useCartStore((state) => state.setisNewItemActive)
