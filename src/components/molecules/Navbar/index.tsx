@@ -1,5 +1,6 @@
+'use client'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { HistoryIcon, MenuIcon, StatsIcon } from '@/components/atoms/Icons'
 import styles from './styles.module.css'
 
@@ -19,8 +20,7 @@ const menuIcons = [
 ]
 
 export function Navbar() {
-  const router = useRouter()
-  const { pathname } = router
+  const pathname = usePathname()
 
   return (
     <nav className='flex flex-col gap-12 w-full text-[#454545]'>

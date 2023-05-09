@@ -1,8 +1,8 @@
+import { DeleteIcon, MinusIcon, PlusIcon } from '@/components/atoms/Icons'
 import {
   type ShoppingListProduct as Product,
   useShoppingListStore
 } from '@/store'
-import { DeleteIcon, MinusIcon, PlusIcon } from '@/components/atoms'
 
 interface Props {
   product: Product

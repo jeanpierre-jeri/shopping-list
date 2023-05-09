@@ -1,7 +1,8 @@
-import { PlusIcon } from '@/components/atoms'
+
 import { ToastContainer, toast } from 'react-toastify'
 import { useShoppingListStore } from '@/store'
 import { useProductDetailsStore } from '@/store/productDetailsStore'
+import { PlusIcon } from '@/components/atoms/Icons'
 interface ProductProps {
   id: number
   name: string

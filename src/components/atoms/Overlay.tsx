@@ -1,3 +1,4 @@
+'use client'
 import { useOverlayStore } from '@/store/overlayStore'
 
 export const Overlay = () => {

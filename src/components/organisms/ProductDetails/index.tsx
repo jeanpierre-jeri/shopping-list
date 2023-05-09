@@ -1,12 +1,13 @@
+'use client'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useShoppingListStore } from '@/store'
 import { useOverlayStore } from '@/store/overlayStore'
 import { useProductStore } from '@/store/productStore'
-import { BackArrowIcon, CloseIcon } from '@/components/atoms'
 
 import { useProductDetailsStore } from '@/store/productDetailsStore'
 import styles from './styles.module.css'
+import { BackArrowIcon, CloseIcon } from '@/components/atoms/Icons'
 
 export const ProductDetails = () => {
   const {

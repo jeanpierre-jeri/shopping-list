@@ -1,5 +1,5 @@
+import { Product } from '@/components/molecules/Product'
 import { CategoriesData } from '@/interfaces'
-import { Product } from '@/components/molecules'
 
 interface CategoriesProps {
   categories: CategoriesData[] | undefined

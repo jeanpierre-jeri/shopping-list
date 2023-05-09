@@ -1,3 +1,4 @@
+'use client'
 import { useRef, useState } from 'react'
 import useSWR from 'swr'
 import { useCartStore } from '@/store'
@@ -5,7 +6,7 @@ import { readFileAsDataUrl } from '@/lib'
 import { Category } from '@/interfaces'
 import styles from './styles.module.css'
 import { useOverlayStore } from '@/store/overlayStore'
-import { CloseIcon } from '@/components/atoms'
+import { CloseIcon } from '@/components/atoms/Icons'
 
 type Image = string | ArrayBuffer | null
 
@@ -138,7 +139,9 @@ export function AddNewItem() {
                 })}
               </datalist>
             </div>
-            <button ref={submitInput} type='submit' className='hidden' />
+            <button ref={submitInput} type='submit' className='hidden'>
+              Boton
+            </button>
           </form>
         </div>
 

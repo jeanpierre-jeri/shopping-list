@@ -1,31 +1,30 @@
-import { PropsWithChildren } from 'react'
 
-import NoSSRWrapper from '@/components/organisms/NoSSRWrapper'
-import { AddNewItem, ProductDetails, ShoppingList } from '@/components/organisms'
-import { User, Navbar, Cart } from '@/components/molecules'
-
+import { User } from '@/components/molecules/User'
 import styles from './styles.module.css'
+import { Navbar } from '@/components/molecules/Navbar'
+import { Cart } from '@/components/molecules/Cart'
+import { ShoppingList } from '@/components/organisms/ShoppingList'
+import { ProductDetails } from '@/components/organisms/ProductDetails'
+import { AddNewItem } from '@/components/organisms/AddNewItem'
 import { Overlay } from '@/components/atoms/Overlay'
 
-export function MainLayout({ children }: PropsWithChildren) {
+export function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <NoSSRWrapper>
-      <div className={`${styles.main} bg-[#FAFAFE]`}>
-        <aside className='flex flex-col justify-between items-center bg-white py-8'>
-          <User />
+    <div className={`${styles.main} bg-[#FAFAFE]`}>
+      <aside className='flex flex-col justify-between items-center bg-white py-8'>
+        <User />
 
-          <Navbar />
+        <Navbar />
 
-          <Cart />
-        </aside>
-        <main className='overflow-y-auto'>{children}</main>
+        <Cart />
+      </aside>
+      <main className='overflow-y-auto'>{children}</main>
 
-        <ShoppingList />
-        <ProductDetails />
-        <AddNewItem />
-        <Overlay />
+      <ShoppingList />
+      <ProductDetails />
+      <AddNewItem />
+      <Overlay />
 
-      </div>
-    </NoSSRWrapper>
+    </div>
   )
 }

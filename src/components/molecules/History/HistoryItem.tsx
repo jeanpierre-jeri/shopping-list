@@ -1,7 +1,7 @@
-import { ArrowIcon, DateIcon } from '@/components/atoms'
 import { ShoppingListItem } from '@/interfaces'
 import Link from 'next/link'
 import styles from './styles.module.css'
+import { ArrowIcon, DateIcon } from '@/components/atoms/Icons'
 
 // type HistoryItemType = Omit<ShoppingListItem, 'id'>
 

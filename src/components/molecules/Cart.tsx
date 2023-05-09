@@ -1,6 +1,7 @@
+'use client'
 import { useMemo } from 'react'
 import { useCartStore, useShoppingListStore } from '@/store'
-import { CartIcon } from '../atoms'
+import { CartIcon } from '../atoms/Icons'
 
 export function Cart() {
   const { setIsCartActive, isCartActive } = useCartStore((state) => ({
